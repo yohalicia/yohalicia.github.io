@@ -24,7 +24,7 @@
 			<tr><th>name</th><th>major</th><th>midterm</th><th>final</th></tr>
 			{{#each rows}}
 				<tr>
-					<td>{{name}}</td><td>{{amjor}}</td><td>{{midterm}}</td><td>{{final}}</td>
+					<td>{{name}}</td><td>{{major}}</td><td>{{midterm}}</td><td>{{final}}</td>
 				</tr>
 			{{/each}}
 		</table>
@@ -42,7 +42,7 @@
             var templateText = document.getElementById('tableTemplate').innerHTML;
             var compiledTemplateText = Handlebars.compile(templateText);
 			
-			funtion showMajor(majorCode){
+			function showMajor(majorCode) {
 			var filtered = [];
 
 			for (var i = 0; i < data.length; i++) {
@@ -73,4 +73,5 @@
 
 </body>
 </html>
+
 
