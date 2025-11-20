@@ -43,15 +43,15 @@
             var compiledTemplateText = Handlebars.compile(templateText);
 			
 			function showMajor(majorCode) {
-			var filtered = [];
+			var dataFiltered = [];
 
 			for (var i = 0; i < data.length; i++) {
 				if (data[i].major === majorCode) {
-					filtered.push(data[i]);
+					dataFiltered.push(data[i]);
 				}
 			}
 
-			var compiledHtml = compiledTemplateText({ rows: filtered });
+			var compiledHtml = compiledTemplateText({ rows: dataFiltered });
 			document.getElementById('result').innerHTML = compiledHtml;
             }
 			
@@ -73,5 +73,6 @@
 
 </body>
 </html>
+
 
 
