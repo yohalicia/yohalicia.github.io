@@ -42,11 +42,11 @@
             var templateText = document.getElementById('tableTemplate').innerHTML;
             var compiledTemplateText = Handlebars.compile(templateText);
 			
-			function showMajor(majorCode) {
+			function showMajor(major) {
 			var dataFiltered = [];
 
 			for (var i = 0; i < data.length; i++) {
-				if (data[i].major === majorCode) {
+				if (data[i].major === major) {
 					dataFiltered.push(data[i]);
 				}
 			}
@@ -73,6 +73,7 @@
 
 </body>
 </html>
+
 
 
 
