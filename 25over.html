@@ -7,7 +7,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<!-- Vue 3 -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
@@ -20,12 +19,12 @@
     </div>
     <ul class="nav navbar-nav">
         <li><a href="index.html">All Tickets</a></li>
-        <li class="active"><a href="25over.html">25mph or move over</a></li>
+        <li class="active"><a href="25over.html">25mph or more over</a></li>
     </ul>
 </nav>
 
-<div id="ticketOverApp">
-    <h2>Tickets 25 MPH or More Over the Speed Limit</h2>
+<div id="25OverApp">
+    <h2>Tickets July 4, 2014, Minneapolis/St. Paul, 25 mph or more over the limit</h2>
 
     <table class="table table-bordered table-striped">
         <tr>
@@ -36,7 +35,6 @@
             <th>Violator Sex</th>
         </tr>
 
-        <!-- only tickets where actual_speed - posted_speed >= 25 -->
         <tr v-for="ticket in filteredTickets" :key="ticket.tid">
             <td>{{ ticket.tid }}</td>
             <td>{{ ticket.stop_time }}</td>
@@ -47,7 +45,7 @@
     </table>
 </div>
 
-</div> <!-- container end -->
+</div>
 
 <script>
 const app = Vue.createApp({
@@ -71,9 +69,10 @@ const app = Vue.createApp({
     }
 });
 
-app.mount('#ticketOverApp');
+app.mount('#25OverApp');
 </script>
 
 </body>
 </html>
+
 
