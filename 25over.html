@@ -1,74 +1,78 @@
 <!DOCTYPE html>
-<html><head><title>speeding tickets</title>
+<html>
+<head>
+<title>25 MPH or More Over</title>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
-
+<!-- Vue 3 -->
+<script src="https://unpkg.com/vue@3"></script>
 </head>
+
 <body>
-
 <div class="container">
-<nav class="navbar navbar-inverse">
 
+<nav class="navbar navbar-inverse">
     <div class="navbar-header">
         <a class="navbar-brand" href="#">Our Website</a>
     </div>
-    <div>
-       <ul class="nav navbar-nav">
-           <li class="active"><a href="index.html">All Tickets</a></li>
-           <li><a href="25over.html">25mph or move over</a></li>
-       </ul>
-    </div>
+    <ul class="nav navbar-nav">
+        <li><a href="index.html">All Tickets</a></li>
+        <li class="active"><a href="25over.html">25mph or move over</a></li>
+    </ul>
+</nav>
 
-</nav>    <!-- end nav-bar -->
+<div id="ticketOverApp">
+    <h2>Tickets 25 MPH or More Over the Speed Limit</h2>
 
-<div id="over25App">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Ticket ID</th>
+            <th>Time</th>
+            <th>Posted Speed</th>
+            <th>MPH Over</th>
+            <th>Violator Sex</th>
+        </tr>
 
-     <h2>25mph or move over</h2>
-          
-          <table class="table table-bordered table-striped">
-              <tr>
-                  <th>Ticket ID</th>
-                  <th>Time</th>
-                  <th>Posted Speed</th>
-                  <th>MPH Over</th>
-                  <th>Violator Sex</th>
-              </tr>
-              <tr v-for = "ticket in tickets">
-                  <td>{{ticket.tid}}</td>
-                  <td>{{ticket.stop_time}}</td>
-                  <td>{{ticket.posted_speed}}</td>
-                  <td>{{ticket.actual_speed - ticket.posted_speed}}</td> 
-                  <td>{{ticket.violator_sex}}</td>
-              </tr>
-         </table>
-  
-</div>   <!-- end gpaApp -->
-</div>   <!-- end class= 'container' -->
+        <!-- only tickets where actual_speed - posted_speed >= 25 -->
+        <tr v-for="ticket in filteredTickets" :key="ticket.tid">
+            <td>{{ ticket.tid }}</td>
+            <td>{{ ticket.stop_time }}</td>
+            <td>{{ ticket.posted_speed }}</td>
+            <td>{{ ticket.actual_speed - ticket.posted_speed }}</td>
+            <td>{{ ticket.violator_sex }}</td>
+        </tr>
+    </table>
+</div>
+
+</div> <!-- container end -->
 
 <script>
-let app = Vue.createApp({
+const app = Vue.createApp({
     data() {
         return {
             tickets: []
         }
     },
+
     computed: {
         filteredTickets() {
-            return this.tickets.filter(t => (t.actual_speed - t.posted_speed) >= 25);
+            return this.tickets.filter(t =>
+                (t.actual_speed - t.posted_speed) >= 25
+            );
         }
     },
+
     async created() {
-        const response = await fetch('tickets1.json');
+        const response = await fetch('./tickets1.json');
         this.tickets = await response.json();
     }
 });
 
-app.mount('#over25App');
+app.mount('#ticketOverApp');
 </script>
 
 </body>
-
 </html>
