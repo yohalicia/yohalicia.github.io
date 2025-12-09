@@ -49,26 +49,19 @@
 </div>   <!-- end class= 'container' -->
 
 <script>
-       let app = Vue.createApp({
-            data() {     // returns an object of data
-                return {
-                    tickets: [],           // array to hold student data
-                }
-            },
-            created() {      // section executes as page loads
-                this.getData()  // load json data as page loads
-            },
-            methods: {    // ajax request
-                async getData() {
-                    const response = await fetch('tickets1.json')
-                    this.tickets = await response.json()
-                    //tickets = data.filter( (item) => item.major == majSelect );     
-                },
-            }
-          })
-      
-      app.mount('#ticketApp')   //in which div to mount the vue app
-		  
-
+		let app = Vue.createApp({
+		    data() {
+		        return {
+		            tickets: []
+		        }
+		    },
+		    async created() {
+		        const response = await fetch('tickets1.json');
+		        this.tickets = await response.json();
+		    }
+		});
+		
+		app.mount('#ticketApp');
 </script>
+
 </body></html>
