@@ -35,7 +35,7 @@
             <th>Violator Sex</th>
         </tr>
 
-        <tr v-for="ticket in filteredTickets" :key="ticket.tid">
+        <tr v-for="ticket in filteredTickets">
             <td>{{ ticket.tid }}</td>
             <td>{{ ticket.stop_time }}</td>
             <td>{{ ticket.posted_speed }}</td>
@@ -74,6 +74,7 @@ app.mount('#over25App')
 
 </body>
 </html>
+
 
 
 
