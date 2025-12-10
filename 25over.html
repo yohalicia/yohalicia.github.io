@@ -64,17 +64,20 @@ let app = Vue.createApp({
         }
     },
 
-    async created() {
-        const response = await fetch('./tickets1.json');
-        this.tickets = await response.json();
+     created() {
+        this.getData()
     },
-})
+    methods: {
+        async getData() {
+            const response = await fetch('tickets1.json')
+            this.tickets = await response.json()
 
 app.mount('#over25App')
 </script>
 
 </body>
 </html>
+
 
 
 
