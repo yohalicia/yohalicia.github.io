@@ -51,7 +51,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            tickets: []
+            tickets: [],
         }
     },
 
@@ -59,21 +59,22 @@ const app = Vue.createApp({
         filteredTickets() {
             return this.tickets.filter(t =>
                 (t.actual_speed - t.posted_speed) >= 25
-            );
+            )
         }
     },
 
     async created() {
         const response = await fetch('./tickets1.json');
         this.tickets = await response.json();
-    }
-});
+    },
+})
 
-app.mount('#over25App');
+app.mount('#over25App')
 </script>
 
 </body>
 </html>
+
 
 
 
