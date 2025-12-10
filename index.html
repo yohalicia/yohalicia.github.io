@@ -51,21 +51,22 @@
 const app = Vue.createApp({
     data() {
         return {
-            tickets: []
+            tickets: [],
         }
     },
 
     async created() {
-        const response = await fetch('./tickets1.json');
-        this.tickets = await response.json();
-    }
-});
+        const response = await fetch('tickets1.json')
+        this.tickets = await response.json()
+    },
+})
 
 app.mount('#ticketApp');
 </script>
 
 </body>
 </html>
+
 
 
 
