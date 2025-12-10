@@ -36,7 +36,7 @@
             <th>Violator Sex</th>
         </tr>
 
-        <tr v-for="ticket in filteredTickets()">
+        <tr v-for="ticket in ticketsOver25()">
             <td>{{ ticket.tid }}</td>
             <td>{{ ticket.stop_time }}</td>
             <td>{{ ticket.posted_speed }}</td>
@@ -65,7 +65,7 @@ let app = Vue.createApp({
             this.tickets = await response.json()
 
          },
-        filteredTickets() {
+        ticketsOver25() {
             return this.tickets.filter(t => (t.actual_speed - t.posted_speed) > 25)
         }
      }
@@ -76,6 +76,7 @@ app.mount('#over25App')
 
 </body>
 </html>
+
 
 
 
