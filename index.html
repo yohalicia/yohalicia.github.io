@@ -48,7 +48,7 @@
 </div>
 
 <script>
-const app = Vue.createApp({
+let app = Vue.createApp({
     data() {
         return {
             tickets: [],
@@ -61,11 +61,12 @@ const app = Vue.createApp({
     },
 })
 
-app.mount('#ticketApp');
+app.mount('#ticketApp')
 </script>
 
 </body>
 </html>
+
 
 
 
